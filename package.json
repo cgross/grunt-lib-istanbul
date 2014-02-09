@@ -1,0 +1,25 @@
+{
+  "name": "grunt-lib-istanbul",
+  "version": "0.0.0",
+  "description": "Library to easily add Istanbul code coverage to Grunt test runners using PhantomJS",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "main": "lib/instanbul.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cgross/grunt-lib-istanbul.git"
+  },
+  "author": {
+    "name": "Chris Gross",
+    "email": "schtoo@schtoo.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cgross/grunt-lib-istanbul/issues"
+  },
+  "dependencies": {
+    "istanbul": "~0.2.4",
+    "rimraf": "~2.2.6"
+  }
+}
