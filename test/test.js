@@ -4,7 +4,7 @@ var fs = require('fs');
 var istanbulLib = require('../lib/istanbul.js');
 var rimraf = require('rimraf');
 var path = require('path');
-var os = require('os');
+var os = require('os-shim');
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -38,8 +38,8 @@ exports.istanbulLib = {
 
     var instrumented = istanbulLib.instrument(['test/fixtures/sample.js']);
 
-    var actual = fs.readFileSync(instrumented[0],{encoding:'utf8'});
-    var expected = fs.readFileSync('test/fixtures/instrumented_sample.js',{encoding:'utf8'});
+    var actual = fs.readFileSync(instrumented[0],'utf8');
+    var expected = fs.readFileSync('test/fixtures/instrumented_sample.js','utf8');
     test.equal(actual, expected, 'should instrument the file correctly.');
 
     test.done();

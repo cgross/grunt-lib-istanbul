@@ -20,7 +20,8 @@
   },
   "dependencies": {
     "istanbul": "~0.2.4",
-    "rimraf": "~2.2.6"
+    "rimraf": "~2.2.6",
+    "os-shim": "~0.1.2"
   },
   "engines": {
     "node": ">= 0.6.0"
