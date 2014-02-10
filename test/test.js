@@ -27,12 +27,12 @@ var os = require('os');
 */
 
 exports.istanbulLib = {
-  setUp: function(done) {
-    done();
-  },
-  tearDown: function(done) {
-    done();
-  },
+  // setUp: function(done) {
+  //   done();
+  // },
+  // tearDown: function(done) {
+  //   done();
+  // },
   instrument: function(test) {
     test.expect(1);
 
@@ -48,8 +48,8 @@ exports.istanbulLib = {
     test.expect(1);
 
     var coverage = require('./fixtures/coverage.json');
-    istanbulLib.writeReport(coverage, {istanbul: { report: 'html', directory: 'test/report'}});
-    test.equal(fs.existsSync('test/report/index.html'), true, 'should create the report.');
+    istanbulLib.writeReport(coverage, {istanbul: { report: 'lcovonly', directory: 'test/report'}});
+    test.equal(fs.existsSync('test/report/lcov.info'), true, 'should create the report.');
 
     rimraf.sync('test/report');
 
