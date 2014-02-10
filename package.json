@@ -1,6 +1,6 @@
 {
   "name": "grunt-lib-istanbul",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Library to easily add Istanbul code coverage to Grunt test runners using PhantomJS",
   "scripts": {
     "test": "grunt test"

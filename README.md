@@ -8,11 +8,11 @@ Use this library to add Istanbul code coverage to Grunt test runners which run t
 
 Integrating Istanbul code coverage via `grunt-lib-istanbul` is simple.  This library exports 3 methods:
 
-* instrument(filesSrc,options) - Pass the configure files for the task runner and your task options.  The `filesSrc` argument should be `this.filesSrc` directly from your test runner task.  The `options` argument should be the test runner task's grunt options unaltered.  More information about options further down.  This method returns a list of instrumented files that the test runner should use instead of the passed in `filesSrc`.
-* writeReport(coverageJson,options) - `coverageJson` is the data produced by Istanbul and needs to be sent from the PhantomJS instance back to the test runner task code.  The `options` argument should be the test runner task's grunt options unaltered.
-* cleanUp() - Cleans up the temp directory containing the instrumented files.  Call after you create the report.
+* `instrument(filesSrc,options)` - Pass the configured files for the task runner and your task options.  The `filesSrc` argument should be `this.filesSrc` directly from your test runner task.  The `options` argument should be the test runner task's grunt options unaltered.  More information about options further down.  This method returns a list of instrumented files that the test runner should use instead of the passed in `filesSrc`.
+* `writeReport(coverageJson,options)` - `coverageJson` is the data produced by Istanbul and needs to be sent from the PhantomJS instance back to the test runner task code.  The `options` argument should be the test runner task's grunt options unaltered.
+* `cleanUp()` - Cleans up the temp directory containing the instrumented files.  Call after you create the report.
 
-You'll need to call `instrument` and use the returned instrumented files array as the source files under test by the test runner.  When the test runner runs these instrumented files as part of the test run, a `__coverage__` global var is created.  This data must be passed back to the test runner so it may be passed in turn to `writeReport`.  Finally, you should call `cleanUp` after you've written the report.
+You'll need to call `instrument` and use the returned instrumented files array as the source files under test by the test runner.  When the test runner runs these instrumented files as part of the test run, a `__coverage__` global var is created in the PhantomJS instance.  This data must be passed back to the test runner so it may be passed in turn to `writeReport`.  Finally, you should call `cleanUp` after you've written the report.
 
 ## Options
 
@@ -42,7 +42,7 @@ test_runner_task: {
 }
 ```
 
-By default, a summary of the code coverage will be written to the console.  To create an HTML report or specify any other options, configure the `istanbul property like so:
+By default, a summary of the code coverage will be written to the console.  To create an HTML report or specify any other options, configure the `istanbul` property like so:
 
 ```js
 test_runner_task: {
@@ -59,3 +59,5 @@ test_runner_task: {
 	}
 }
 ```
+
+If your coverage report contains coverage results for 3rd party libaries, please ensure that you've configured the test runner so that the `src` attribute contains only your code and other libraries are specifed in `vendor` or `helpers`.
